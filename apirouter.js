@@ -34,7 +34,6 @@ apiRouter.use(session({
     store: new FileStore(),  // 本地存储session（文本文件，也可以选择其他store，比如redis的）
     saveUninitialized: false,  // 是否自动保存未初始化的会话，建议false
     resave: false,  // 是否每次都重新保存会话，建议false
-    rolling: true,
     cookie: {
         maxAge: 10 * 60 * 1000  // 有效期，单位是毫秒
     }
@@ -51,7 +50,7 @@ apiRouter.use(function (req, res, next) {
         if(isLogined){
             next();
         } else {
-            res.json({code: 3, msg:'登录超时!'});
+            res.json({code: 3, msg:'已登出或登录超时!'});
             return;
         }
     }
