@@ -133,7 +133,26 @@ apiRouter.get('/detail', function (req, res) {
 
 //获取comments(评论)数据
 apiRouter.get('/comments', function (req, res) {
-		var data = require('./datas/comments.js');
+    var data = require('./datas/comments.js');
+    res.json({
+        code: 0,
+        msg: '',
+        data: data
+    })
+})
+
+//获取comments(评论)数据
+apiRouter.post('/comments', function (req, res) {
+    if (!req.body.dID && !req.body.comments) {
+        res.json({
+            code: 1,
+            msg: '参数错误！'
+        })
+        return
+    }
+    console.log(req.body.dID)
+    console.log(req.body.comments)
+    var data = require('./datas/comments.js');
     res.json({
         code: 0,
         msg: '',
