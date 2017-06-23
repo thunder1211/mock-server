@@ -6,6 +6,7 @@ var apirouter = require('./apirouter.js');
 
 app.use('/api', apirouter);
 app.use('/static', express.static('./static'));
+app.use('/views', express.static('./views'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
